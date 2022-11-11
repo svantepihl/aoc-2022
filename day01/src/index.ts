@@ -1,16 +1,16 @@
 import * as fs from 'fs';
 
-const inputDataLines = fs.readFileSync('input.txt', 'utf-8');
+const inputString = fs.readFileSync('input.txt', 'utf-8');
 
 const part = process.env.part || 'part1';
 
-if (part === 'part1') console.log(getSolutionPartOne(inputDataLines));
-else console.log(getSolutionPartTwo(inputDataLines));
+if (part === 'part1') console.log(getSolutionPartOne(inputString));
+else console.log(getSolutionPartTwo(inputString));
 
-export function getSolutionPartOne(inputDataLines: string): any {
+export function getSolutionPartOne(inputString: string): string {
   throw new Error('Function not implemented.');
 }
 
-export function getSolutionPartTwo(inputDataLines: string): any {
+export function getSolutionPartTwo(inputString: string): string {
   throw new Error('Function not implemented.');
 }
