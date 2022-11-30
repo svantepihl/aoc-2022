@@ -1,13 +1,13 @@
-import {getSolutionPartOne, getSolutionPartTwo} from '.';
+import { getSolutionPartOne, getSolutionPartTwo } from ".";
 
-describe('getSolutionPartOne', () => {
-  it('should throw', () => {
-    expect(() => getSolutionPartOne('')).toThrow();
+describe("getSolutionPartOne", () => {
+  it("should throw", () => {
+    expect(() => getSolutionPartOne("")).toThrow();
   });
 });
 
-describe('getSolutionPartTwo', () => {
-  it('should throw', () => {
-    expect(() => getSolutionPartTwo('')).toThrow();
+describe("getSolutionPartTwo", () => {
+  it("should throw", () => {
+    expect(() => getSolutionPartTwo("")).toThrow();
   });
 });
