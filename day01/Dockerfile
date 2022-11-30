@@ -19,7 +19,7 @@ COPY package.json yarn.lock ./
 RUN yarn install --production --frozen-lockfile
 
 COPY --from=builder /usr/src/app/dist ./dist
-COPY ./ dest
+COPY input.txt input.txt
 
 EXPOSE 8080
 CMD [ "node", "dist/index.js" ]
