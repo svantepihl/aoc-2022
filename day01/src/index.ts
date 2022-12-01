@@ -1,6 +1,6 @@
 import * as fs from "fs";
 
-const inputString = fs.readFileSync("input.txt", "utf-8");
+const input = fs.readFileSync("input.txt", "utf-8");
 
 const parseInput = (input: string): number[] => {
   return input
@@ -10,11 +10,11 @@ const parseInput = (input: string): number[] => {
     .sort((a, b) => b - a);
 };
 
-export function getSolutionPartOne(input: string): number {
+export function partOne(input: string): number {
   return parseInput(input)[0];
 }
 
-export function getSolutionPartTwo(input: string): number {
+export function partTwo(input: string): number {
   return parseInput(input)
     .splice(0, 3)
     .reduce((acc, cur) => acc + cur, 0);
@@ -22,5 +22,4 @@ export function getSolutionPartTwo(input: string): number {
 
 const part = process.env.part || "part1";
 
-if (part === "part1") console.log(getSolutionPartOne(inputString));
-else console.log(getSolutionPartTwo(inputString));
+console.log(part === "part1" ? partOne(input) : partTwo(input));
