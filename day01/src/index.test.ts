@@ -1,4 +1,4 @@
-import { getSolutionPartOne, getSolutionPartTwo } from ".";
+import { partOne, partTwo } from ".";
 
 const exampleInput = `1000
 2000
@@ -17,12 +17,12 @@ const exampleInput = `1000
 
 describe("getSolutionPartOne", () => {
   it("should return the correct solution", () => {
-    expect(getSolutionPartOne(exampleInput)).toBe("24000");
+    expect(partOne(exampleInput)).toBe(24000);
   });
 });
 
 describe("getSolutionPartTwo", () => {
   it("should return the correct solution", () => {
-    expect(getSolutionPartTwo(exampleInput)).toBe("45000");
+    expect(partTwo(exampleInput)).toBe(45000);
   });
 });
