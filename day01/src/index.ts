@@ -21,5 +21,5 @@ export function partTwo(input: string): number {
 }
 
 const part = process.env.part || "part1";
-
+console.log("Typescript");
 console.log(part === "part1" ? partOne(input) : partTwo(input));
