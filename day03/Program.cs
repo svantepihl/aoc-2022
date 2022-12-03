@@ -1,0 +1,3 @@
+﻿var input = File.ReadAllLines("input.txt"); Console.WriteLine(Environment.GetEnvironmentVariable("part") != "part2" ? PartOne(input) : PartTwo(input));
+int PartOne(IList<string> input) => input.Select(bag => bag[..(bag.Length / 2)].Intersect(bag[(bag.Length / 2)..])).Select(chars => chars.Sum(c => Char.IsUpper(c) ? c - 38 : c - 'a' + 1)).Sum();
+int PartTwo(IList<string> input) => input.Chunk(3).Select(group => group.Skip(1).Aggregate(new HashSet<char>(group[0]), (a, b) => a.Intersect(b).ToHashSet()).First()).Sum(c => Char.IsUpper(c) ? c - 38 : c - 'a' + 1);
