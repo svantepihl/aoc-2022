@@ -5,8 +5,9 @@ COPY . .
 RUN dotnet restore
 RUN dotnet publish -c Release -o /app -r linux-musl-x64 --no-restore
 
-FROM mcr.microsoft.com/dotnet/runtime:7.0-alpine
-
+FROM alpine:latest
+WORKDIR /
+RUN apk add libstdc++
 WORKDIR /app
 COPY --from=build /app/aoc .
 COPY input*.txt ./
