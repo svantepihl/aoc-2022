@@ -1,5 +1,4 @@
-﻿open System.IO
-let input = File.ReadLines "input.txt"
+﻿let input = System.IO.File.ReadLines "input.txt"
 let IsPartOne = not (System.Environment.GetEnvironmentVariable("part") = "part2")
 
 let isContained (pair: int * int * int * int) =
