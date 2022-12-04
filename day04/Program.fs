@@ -1,26 +1,23 @@
 ﻿open System.IO
 let input = File.ReadLines "input.txt"
-
 let IsPartOne = not (System.Environment.GetEnvironmentVariable("part") = "part2")
 
-let isContained (pair: array<int> * array<int>) =
+let isContained (pair: int * int * int * int) =
     match (pair) with
-    | (a, b) when a.[0] <= b.[0] && a.[1] >= b.[1] -> 1
-    | (a, b) when a.[0] >= b.[0] && a.[1] <= b.[1] -> 1
+    | (startA, endA, startB, endB) when endA >= startB && startA <= endB -> 1
     | _ -> 0
 
-let isOverlapping (pair: array<int> * array<int>) =
+let isOverlapping (pair: int * int * int * int) =
     match (pair) with
-    | (a, b) when a.[0] <= b.[0] && a.[1] >= b.[0] -> 1
-    | (a, b) when a.[0] >= b.[0] && a.[1] <= b.[1] -> 1
-    | (a, b) when a.[0] <= b.[1] && a.[1] >= b.[1] -> 1
+    | (startA, endA, startB, endB) when startA >= startB && endA <= endB -> 1
+    | (startA, endA, startB, endB) when startB >= startA && endB <= endA -> 1
     | _ -> 0
 
-let result =
-    input
-    |> Seq.map (fun line -> line.Split(","))
-    |> Seq.map (fun line -> (line.[0].Split("-") |> Array.map int), line.[1].Split("-") |> Array.map int)
-    |> Seq.map (fun pair -> if IsPartOne then isContained pair else isOverlapping pair)
-    |> Seq.sum
-
-printfn "%d" result
+printfn
+    "%d"
+    (input
+     |> Seq.map (fun line ->
+         line.Split [| '-'; ',' |]
+         |> (fun line -> (int line.[0], int line.[1], int line.[2], int line.[3])))
+     |> Seq.map (fun pair -> if IsPartOne then isContained pair else isOverlapping pair)
+     |> Seq.sum)
