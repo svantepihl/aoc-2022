@@ -1,12 +1,14 @@
-FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine as build
-WORKDIR /app
-RUN apk add clang build-base zlib-dev
-COPY . .
-RUN dotnet publish -c Release -r linux-musl-x64 -o .
+FROM mcr.microsoft.com/dotnet/sdk:7.0-alpine AS build
 
-FROM alpine:latest
-WORKDIR /
-RUN apk add libstdc++
+WORKDIR /src
+COPY . .
+RUN dotnet restore
+RUN dotnet publish -c Release -o /app -r linux-musl-x64 --no-restore
+
+FROM mcr.microsoft.com/dotnet/runtime:7.0-alpine
+
+WORKDIR /app
 COPY --from=build /app/aoc .
-COPY ./input.txt .
-ENTRYPOINT ./aoc
+COPY input*.txt ./
+
+ENTRYPOINT ["./aoc"]
