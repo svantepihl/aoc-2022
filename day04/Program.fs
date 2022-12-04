@@ -17,6 +17,7 @@ printfn
     (input
      |> Seq.map (fun line ->
          line.Split [| '-'; ',' |]
-         |> (fun line -> (int line.[0], int line.[1], int line.[2], int line.[3])))
+         |> Array.map int
+         |> (fun line -> (line.[0], line.[1], line.[2], line.[3])))
      |> Seq.map (fun pair -> if IsPartOne then isContained pair else isOverlapping pair)
      |> Seq.sum)
