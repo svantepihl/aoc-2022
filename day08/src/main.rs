@@ -58,10 +58,6 @@ fn part_one(forest: &Forest) -> i32 {
                 || check_up(x, y, current_tree, forest)
                 || check_down(x, y, current_tree, forest)
             {
-                println!(
-                    "tree: {} at coordinates x:{} y:{} is visible",
-                    current_tree, x, y
-                );
                 tree_count += 1;
                 continue;
             }
